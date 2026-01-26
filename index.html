@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#10B981">
+    <meta name="description" content="Il tuo compagno digitale per superare le dipendenze">
+    
+    <title>Streak Guardian</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- PWA manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Streak Guardian">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+    
+    <!-- ONBOARDING FLOW -->
+    <div id="onboarding-container" class="page-container" style="display: none;">
+        
+        <!-- Step 1: Welcome -->
+        <div id="onboarding-step-1" class="onboarding-step">
+            <div class="onboarding-content">
+                <div class="welcome-emoji">👋</div>
+                <h1 class="onboarding-title">Benvenuto in<br>Streak Guardian</h1>
+                <p class="onboarding-text">
+                    Il tuo compagno digitale nel percorso per superare una dipendenza.
+                </p>
+                <p class="onboarding-text">
+                    Più giorni resisti, più il tuo compagno cresce e si evolve insieme a te.
+                </p>
+                <button class="btn-primary btn-large" onclick="nextOnboardingStep(2)">
+                    Inizia il viaggio →
+                </button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Choose Addiction -->
+        <div id="onboarding-step-2" class="onboarding-step" style="display: none;">
+            <div class="onboarding-content">
+                <h2 class="onboarding-title">Quale dipendenza vuoi affrontare?</h2>
+                <p class="onboarding-subtitle">Scegli quella che senti più importante per te</p>
+                
+                <div class="addiction-grid">
+                    <!-- Behavioral Addictions -->
+                    <div class="addiction-category">
+                        <h3 class="category-title">📱 Comportamentali</h3>
+                        <button class="addiction-card" onclick="selectAddiction('social-media')">
+                            <span class="addiction-icon">📱</span>
+                            <span class="addiction-name">Social Media</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('gaming')">
+                            <span class="addiction-icon">🎮</span>
+                            <span class="addiction-name">Gaming</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('shopping')">
+                            <span class="addiction-icon">🛒</span>
+                            <span class="addiction-name">Shopping</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('pornography')">
+                            <span class="addiction-icon">🔞</span>
+                            <span class="addiction-name">Pornografia</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('procrastination')">
+                            <span class="addiction-icon">⏰</span>
+                            <span class="addiction-name">Procrastinazione</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('gambling')">
+                            <span class="addiction-icon">🎰</span>
+                            <span class="addiction-name">Gambling</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Substance Addictions -->
+                    <div class="addiction-category">
+                        <h3 class="category-title">🍷 Sostanze</h3>
+                        <button class="addiction-card" onclick="selectAddiction('smoking')">
+                            <span class="addiction-icon">🚬</span>
+                            <span class="addiction-name">Fumo</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('alcohol')">
+                            <span class="addiction-icon">🍷</span>
+                            <span class="addiction-name">Alcol</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('cannabis')">
+                            <span class="addiction-icon">🌿</span>
+                            <span class="addiction-name">Cannabis</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('drugs')">
+                            <span class="addiction-icon">💊</span>
+                            <span class="addiction-name">Droghe</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Food & Health -->
+                    <div class="addiction-category">
+                        <h3 class="category-title">🍔 Cibo & Salute</h3>
+                        <button class="addiction-card" onclick="selectAddiction('binge-eating')">
+                            <span class="addiction-icon">🍔</span>
+                            <span class="addiction-name">Abbuffate</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('sugar')">
+                            <span class="addiction-icon">🍭</span>
+                            <span class="addiction-name">Zucchero</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('caffeine')">
+                            <span class="addiction-icon">☕</span>
+                            <span class="addiction-name">Caffeina</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Other -->
+                    <div class="addiction-category">
+                        <h3 class="category-title">💅 Altro</h3>
+                        <button class="addiction-card" onclick="selectAddiction('skin-picking')">
+                            <span class="addiction-icon">💅</span>
+                            <span class="addiction-name">Skin Picking</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('nail-biting')">
+                            <span class="addiction-icon">💅</span>
+                            <span class="addiction-name">Unghie</span>
+                        </button>
+                        <button class="addiction-card" onclick="selectAddiction('toxic-relationship')">
+                            <span class="addiction-icon">💔</span>
+                            <span class="addiction-name">Relazione tossica</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Custom -->
+                    <div class="addiction-category">
+                        <button class="addiction-card addiction-custom" onclick="customAddiction()">
+                            <span class="addiction-icon">✍️</span>
+                            <span class="addiction-name">Altro (scrivi tu)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 3: Choose Companion -->
+        <div id="onboarding-step-3" class="onboarding-step" style="display: none;">
+            <div class="onboarding-content">
+                <h2 class="onboarding-title">Scegli il tuo compagno</h2>
+                <p class="onboarding-subtitle">Crescerà con te durante il tuo percorso</p>
+                
+                <div class="companion-selection">
+                    <div class="companion-card" onclick="selectCompanion('plant')">
+                        <div class="companion-card-icon">🌱</div>
+                        <div class="companion-card-title">PIANTA</div>
+                        <div class="companion-card-description">Crescita lenta e costante</div>
+                        <div class="companion-card-detail">
+                            Perfetto per chi vede il recupero come mettere radici profonde
+                        </div>
+                        <div class="companion-card-evolution">
+                            🌱 → 🌿 → 🪴 → 🌳
+                        </div>
+                    </div>
+                    
+                    <div class="companion-card" onclick="selectCompanion('animal')">
+                        <div class="companion-card-icon">🥚</div>
+                        <div class="companion-card-title">ANIMALE</div>
+                        <div class="companion-card-description">Un compagno che cresce con te</div>
+                        <div class="companion-card-detail">
+                            Perfetto per chi ha bisogno di non sentirsi solo
+                        </div>
+                        <div class="companion-card-evolution">
+                            🥚 → 🐣 → 🐕 → 🦁
+                        </div>
+                    </div>
+                    
+                    <div class="companion-card" onclick="selectCompanion('flame')">
+                        <div class="companion-card-icon">🔥</div>
+                        <div class="companion-card-title">FIAMMA</div>
+                        <div class="companion-card-description">Forza e rinascita interiore</div>
+                        <div class="companion-card-detail">
+                            Perfetto per chi affronta il percorso come una battaglia
+                        </div>
+                        <div class="companion-card-evolution">
+                            ✨ → 🔥 → 🔥🔥 → 🔥🦅
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 4: Name Companion -->
+        <div id="onboarding-step-4" class="onboarding-step" style="display: none;">
+            <div class="onboarding-content">
+                <div class="celebration-emoji">🎉</div>
+                <h2 class="onboarding-title">Perfetto!</h2>
+                <p class="onboarding-text">
+                    Come vuoi chiamare il tuo compagno?
+                </p>
+                
+                <input 
+                    type="text" 
+                    id="companion-name-input" 
+                    class="input-large" 
+                    placeholder="Es: Max, Verde, Phoenix..."
+                    maxlength="20"
+                />
+                <div class="input-hint">Puoi cambiarlo in seguito dalle impostazioni</div>
+                
+                <button class="btn-primary btn-large" onclick="completeOnboarding()">
+                    Conferma e inizia →
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MAIN APP -->
+    <div id="app-container" class="page-container" style="display: none;">
+        
+        <!-- HOME PAGE -->
+        <div id="home-page" class="app-page">
+            <div class="home-container">
+                <!-- Companion Section -->
+                <div class="companion-section">
+                    <div class="companion-emoji" id="companion-emoji">🌱</div>
+                    <div class="companion-name" id="companion-display-name">🌱 Il tuo compagno</div>
+                </div>
+                
+                <!-- Streak Section -->
+                <div class="streak-section">
+                    <div class="streak-counter" id="streak-counter">🔥 0 giorni pulito</div>
+                    <div class="evolution-text" id="evolution-text">Inizia il tuo viaggio oggi!</div>
+                </div>
+                
+                <!-- Check-in Section -->
+                <div class="checkin-section" id="checkin-section">
+                    <div class="checkin-card">
+                        <div class="checkin-greeting" id="checkin-greeting">☀️ Buongiorno!</div>
+                        <div class="checkin-question">Come è andata oggi?</div>
+                        <button class="btn-success btn-checkin" onclick="checkInSuccess()">
+                            ✅ Non ho ceduto
+                        </button>
+                        <button class="btn-danger-outline btn-checkin" onclick="checkInFailed()">
+                            ❌ Ho ceduto
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Already checked in -->
+                <div class="already-checkedin" id="already-checkedin" style="display: none;">
+                    <div class="checkedin-card">
+                        <div class="checkedin-icon">✅</div>
+                        <div class="checkedin-title">Check-in fatto!</div>
+                        <div class="checkedin-text">Torna domani per continuare la tua streak 💪</div>
+                    </div>
+                </div>
+                
+                <!-- SOS Button (always visible) -->
+                <div class="sos-section">
+                    <button class="sos-button" onclick="openSOS()">
+                        <span class="sos-icon">🆘</span>
+                        <span class="sos-text">Sto per cedere</span>
+                        <span class="sos-subtext">Aiutami ora</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STATS PAGE -->
+        <div id="stats-page" class="app-page" style="display: none;">
+            <div class="stats-container">
+                <h1 class="page-title">📊 Le tue statistiche</h1>
+                
+                <!-- Your Journey -->
+                <div class="stats-section">
+                    <h2 class="section-title">🔥 Il tuo percorso</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Streak corrente</div>
+                            <div class="stat-value" id="current-streak">0 giorni</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Streak più lunga</div>
+                            <div class="stat-value" id="longest-streak">0 giorni 🏆</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Data inizio</div>
+                            <div class="stat-value" id="start-date">-</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Momenti SOS superati</div>
+                            <div class="stat-value" id="sos-count">0 💪</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Last 30 Days Calendar -->
+                <div class="stats-section">
+                    <h2 class="section-title">📅 Ultimi 30 giorni</h2>
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <span>L</span><span>M</span><span>M</span><span>G</span><span>V</span><span>S</span><span>D</span>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid">
+                            <!-- Will be populated by JS -->
+                        </div>
+                        <div class="calendar-legend">
+                            <span><span class="legend-icon success">✅</span> Giorno riuscito</span>
+                            <span><span class="legend-icon failed">❌</span> Ricaduta</span>
+                            <span><span class="legend-icon future">⬜</span> Futuro</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Savings (if enabled) -->
+                <div class="stats-section" id="savings-section" style="display: none;">
+                    <h2 class="section-title">💰 Salvadanaio</h2>
+                    <div class="savings-card">
+                        <div class="savings-amount" id="savings-amount">€0</div>
+                        <div class="savings-text">risparmiati in <span id="savings-days">0</span> giorni</div>
+                        <div class="savings-examples" id="savings-examples">
+                            <!-- Will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Next Milestone -->
+                <div class="stats-section">
+                    <h2 class="section-title">🎯 Prossimo traguardo</h2>
+                    <div class="milestone-card">
+                        <div class="milestone-text" id="milestone-text">Continua così!</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-label" id="progress-label">0/3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SETTINGS PAGE -->
+        <div id="settings-page" class="app-page" style="display: none;">
+            <div class="settings-container">
+                <h1 class="page-title">⚙️ Impostazioni</h1>
+                
+                <!-- Personalization -->
+                <div class="settings-section">
+                    <h2 class="section-title">📝 Personalizzazione</h2>
+                    
+                    <div class="setting-item">
+                        <label class="setting-label">Nome del compagno</label>
+                        <div class="setting-input-group">
+                            <input 
+                                type="text" 
+                                id="companion-name-setting" 
+                                class="input-setting" 
+                                placeholder="Dai un nome al tuo compagno"
+                                maxlength="20"
+                            />
+                            <button class="btn-secondary" onclick="saveCompanionName()">Salva</button>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <button class="btn-secondary-full" onclick="changeCompanion()">
+                            🎨 Cambia compagno
+                        </button>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <button class="btn-secondary-full" onclick="changeAddiction()">
+                            🔄 Cambia dipendenza
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Savings -->
+                <div class="settings-section">
+                    <h2 class="section-title">💰 Salvadanaio (opzionale)</h2>
+                    <p class="section-description">Quanto spendevi al giorno per <span id="addiction-name-display">questa dipendenza</span>?</p>
+                    
+                    <div class="setting-item">
+                        <div class="setting-input-group">
+                            <span class="input-prefix">€</span>
+                            <input 
+                                type="number" 
+                                id="daily-cost-setting" 
+                                class="input-setting" 
+                                placeholder="0.00"
+                                min="0"
+                                step="0.5"
+                            />
+                            <span class="input-suffix">al giorno</span>
+                        </div>
+                        <div class="setting-hint">
+                            Esempi: Sigarette €5-8/giorno • Alcol €10-15/giorno
+                        </div>
+                        <button class="btn-secondary" onclick="saveDailyCost()">Salva</button>
+                    </div>
+                </div>
+                
+                <!-- Appearance -->
+                <div class="settings-section">
+                    <h2 class="section-title">🎨 Aspetto</h2>
+                    
+                    <div class="setting-item">
+                        <label class="setting-label">Modalità Scura</label>
+                        <div class="dark-mode-toggle">
+                            <span id="dark-mode-label">Automatica</span>
+                            <div class="dark-mode-switch" id="dark-mode-switch" onclick="toggleDarkMode()">
+                                <div class="dark-mode-switch-toggle"></div>
+                            </div>
+                        </div>
+                        <div class="auto-mode-indicator" id="auto-mode-indicator">
+                            Si attiva automaticamente dalle 20:00 alle 7:00
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label class="setting-label">Suoni Feedback</label>
+                        <div class="dark-mode-toggle">
+                            <span id="sounds-label">Disattivati</span>
+                            <div class="dark-mode-switch" id="sounds-switch" onclick="toggleSounds()">
+                                <div class="dark-mode-switch-toggle"></div>
+                            </div>
+                        </div>
+                        <div class="setting-hint">
+                            Suoni di conferma per check-in ed evoluzioni
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data -->
+                <div class="settings-section">
+                    <h2 class="section-title">💾 Dati</h2>
+                    
+                    <div class="setting-item">
+                        <button class="btn-secondary-full" onclick="exportData()">
+                            📥 Esporta i tuoi dati
+                        </button>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <button class="btn-danger-full" onclick="resetAll()">
+                            🗑️ Resetta tutto
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Info -->
+                <div class="settings-section">
+                    <h2 class="section-title">ℹ️ Info</h2>
+                    
+                    <div class="setting-item">
+                        <button class="btn-secondary-full" onclick="showPrivacy()">
+                            🔒 Privacy & Dati
+                        </button>
+                    </div>
+                    
+                    <div class="version-info">
+                        Streak Guardian v1.0 • Made with ❤️
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav">
+            <div class="bottom-nav-item active" data-page="home" onclick="navigateTo('home')">
+                <div class="bottom-nav-icon">🏠</div>
+                <div class="bottom-nav-label">Home</div>
+            </div>
+            <div class="bottom-nav-item" data-page="stats" onclick="navigateTo('stats')">
+                <div class="bottom-nav-icon">📊</div>
+                <div class="bottom-nav-label">Stats</div>
+            </div>
+            <div class="bottom-nav-item" data-page="settings" onclick="navigateTo('settings')">
+                <div class="bottom-nav-icon">⚙️</div>
+                <div class="bottom-nav-label">Settings</div>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- SOS OVERLAY -->
+    <div id="sos-overlay" class="overlay" style="display: none;">
+        <div class="overlay-content">
+            <button class="overlay-close" onclick="closeSOS()">✕</button>
+            
+            <div class="sos-header">
+                <div class="sos-header-icon">🫂</div>
+                <h2 class="sos-header-title">Respira</h2>
+                <p class="sos-header-text">Sei al sicuro qui.</p>
+            </div>
+            
+            <div class="sos-body">
+                <p class="sos-message">
+                    Il desiderio passerà. Di solito dura solo 5-10 minuti.
+                </p>
+                <p class="sos-question">Cosa vuoi fare adesso?</p>
+                
+                <div class="sos-options">
+                    <button class="sos-option" onclick="sosCallFriend()">
+                        <span class="sos-option-icon">📱</span>
+                        <span class="sos-option-text">Chiama un amico</span>
+                    </button>
+                    
+                    <button class="sos-option" onclick="sosWalk()">
+                        <span class="sos-option-icon">🚶</span>
+                        <span class="sos-option-text">Esco a camminare</span>
+                    </button>
+                    
+                    <button class="sos-option" onclick="sosWrite()">
+                        <span class="sos-option-icon">✍️</span>
+                        <span class="sos-option-text">Scrivo cosa sento</span>
+                    </button>
+                    
+                    <button class="sos-option" onclick="sosTimer()">
+                        <span class="sos-option-icon">⏱️</span>
+                        <span class="sos-option-text">Timer 5 minuti</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- EVOLUTION CELEBRATION OVERLAY -->
+    <div id="evolution-overlay" class="overlay celebration-overlay" style="display: none;">
+        <div class="confetti" id="confetti"></div>
+        <div class="evolution-content">
+            <h1 class="celebration-title">🎉 EVOLUZIONE! 🎉</h1>
+            <div class="emoji-transform">
+                <span class="old-emoji" id="old-emoji">🌱</span>
+                <span class="arrow">→</span>
+                <span class="new-emoji" id="new-emoji">🌿</span>
+            </div>
+            <p class="celebration-message" id="evolution-message">Il tuo compagno è cresciuto!</p>
+            <p class="celebration-submessage" id="evolution-submessage">Continua così! 💪</p>
+            <button class="btn-celebration" onclick="closeEvolution()">Continua il viaggio →</button>
+        </div>
+    </div>
+    
+    <!-- TOAST NOTIFICATIONS -->
+    <div id="toast-container"></div>
+    
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/companion.js"></script>
+    <script src="js/stats.js"></script>
+    <script src="js/app.js"></script>
+    
+</body>
+</html>

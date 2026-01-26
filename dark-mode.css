@@ -1,0 +1,236 @@
+/* ================================
+   STREAK GUARDIAN - DARK MODE
+   ================================ */
+
+/* Dark mode variables */
+body.dark-mode {
+  /* Primary Colors - Darker versions */
+  --color-primary: #10B981;
+  --color-primary-dark: #059669;
+  --color-primary-light: #064E3B;
+  
+  /* Secondary Colors */
+  --color-secondary: #818CF8;
+  --color-secondary-dark: #6366F1;
+  --color-secondary-light: #312E81;
+  
+  /* Danger/Warning - Slightly muted */
+  --color-danger: #F87171;
+  --color-danger-dark: #EF4444;
+  --color-warning: #FBBF24;
+  --color-success: #10B981;
+  
+  /* Neutrals - Inverted */
+  --color-bg: #111827;
+  --color-surface: #1F2937;
+  --color-text: #F9FAFB;
+  --color-text-light: #9CA3AF;
+  --color-border: #374151;
+  
+  /* Accents */
+  --color-gold: #FCD34D;
+  
+  /* Shadows - Adapted for dark */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Smooth transition when switching modes */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode specific adjustments */
+body.dark-mode {
+  background: linear-gradient(to bottom, #0F172A, #111827);
+}
+
+body.dark-mode .home-container {
+  background: linear-gradient(to bottom, #064E3B, #111827);
+}
+
+body.dark-mode .onboarding-step {
+  background: linear-gradient(to bottom, #0F172A, #111827);
+}
+
+/* Cards and surfaces */
+body.dark-mode .companion-card,
+body.dark-mode .addiction-card,
+body.dark-mode .checkin-card,
+body.dark-mode .checkedin-card,
+body.dark-mode .sos-option,
+body.dark-mode .stats-section,
+body.dark-mode .settings-section {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+/* Input fields */
+body.dark-mode .input-large,
+body.dark-mode .input-setting {
+  background: #374151;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+body.dark-mode .input-large::placeholder,
+body.dark-mode .input-setting::placeholder {
+  color: var(--color-text-light);
+}
+
+/* Buttons - maintain visibility */
+body.dark-mode .btn-secondary-full {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+body.dark-mode .btn-secondary-full:hover {
+  background: #374151;
+  border-color: var(--color-primary);
+}
+
+body.dark-mode .btn-danger-outline {
+  color: var(--color-text-light);
+  border-color: var(--color-border);
+}
+
+/* Bottom nav */
+body.dark-mode .bottom-nav {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Overlays */
+body.dark-mode .overlay {
+  background: rgba(0, 0, 0, 0.92);
+}
+
+body.dark-mode .overlay-content,
+body.dark-mode .evolution-content {
+  background: var(--color-surface);
+}
+
+/* Calendar */
+body.dark-mode .calendar-day {
+  background: #374151;
+}
+
+/* Savings card - keep bright */
+body.dark-mode .savings-card {
+  /* Keep the gradient bright for visibility */
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+}
+
+/* Toast notifications */
+body.dark-mode .toast {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Stat items */
+body.dark-mode .stat-item {
+  background: #374151;
+}
+
+/* Evolution text gradient - adjust for dark mode */
+body.dark-mode .streak-counter {
+  background: linear-gradient(135deg, #10B981, #34D399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .celebration-title {
+  background: linear-gradient(135deg, #FBBF24, #FCD34D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Make sure text is readable */
+body.dark-mode .companion-name,
+body.dark-mode .onboarding-title,
+body.dark-mode .page-title,
+body.dark-mode .section-title {
+  color: var(--color-text);
+}
+
+/* Phoenix SVG - add glow in dark mode */
+body.dark-mode .phoenix-svg {
+  filter: drop-shadow(0 4px 12px rgba(255, 140, 0, 0.7)) !important;
+}
+
+/* Improve contrast for important elements */
+body.dark-mode .sos-button {
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
+}
+
+body.dark-mode .sos-button:active {
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.6);
+}
+
+/* Settings dark mode toggle */
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.dark-mode-switch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dark-mode-switch.active {
+  background: var(--color-primary);
+}
+
+.dark-mode-switch-toggle {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode-switch.active .dark-mode-switch-toggle {
+  transform: translateX(30px);
+}
+
+/* Auto mode indicator */
+.auto-mode-indicator {
+  font-size: 12px;
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+}
+
+/* Preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .dark-mode-switch,
+  .dark-mode-switch-toggle {
+    transition: none !important;
+  }
+}
+
+/* System dark mode preference */
+@media (prefers-color-scheme: dark) {
+  body:not(.light-mode-forced) {
+    /* Apply dark mode if no manual preference set */
+    /* This is handled by JavaScript */
+  }
+}
