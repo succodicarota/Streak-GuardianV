@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="soilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#92400E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#78350F;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Soil base -->
+  <ellipse cx="100" cy="150" rx="40" ry="15" fill="url(#soilGrad)"/>
+  <ellipse cx="100" cy="145" rx="35" ry="8" fill="#A16207" opacity="0.6"/>
+  
+  <!-- Stem -->
+  <rect x="98" y="110" width="4" height="40" fill="#059669" rx="2">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="0 100 150;-2 100 150;0 100 150;2 100 150;0 100 150" 
+                      dur="4s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Left leaf -->
+  <ellipse cx="85" cy="120" rx="18" ry="12" fill="url(#leafGrad)" 
+           transform="rotate(-30 85 120)">
+    <animate attributeName="ry" values="12;13;12" dur="2.5s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Right leaf -->
+  <ellipse cx="115" cy="125" rx="18" ry="12" fill="url(#leafGrad)" 
+           transform="rotate(30 115 125)">
+    <animate attributeName="ry" values="12;13;12" dur="2.8s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Center small leaves -->
+  <ellipse cx="95" cy="108" rx="10" ry="8" fill="#10B981" 
+           transform="rotate(-15 95 108)" opacity="0.9"/>
+  <ellipse cx="105" cy="110" rx="10" ry="8" fill="#10B981" 
+           transform="rotate(15 105 110)" opacity="0.9"/>
+  
+  <!-- Sparkle (new growth) -->
+  <circle cx="100" cy="102" r="3" fill="#D1FAE5" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>

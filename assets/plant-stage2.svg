@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="leafGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="soilGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#92400E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#78350F;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Soil base -->
+  <ellipse cx="100" cy="160" rx="45" ry="15" fill="url(#soilGrad2)"/>
+  
+  <!-- Main stem -->
+  <rect x="97" y="90" width="6" height="70" fill="#059669" rx="3">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="0 100 160;-1 100 160;0 100 160;1 100 160;0 100 160" 
+                      dur="5s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Bottom leaves (larger) -->
+  <ellipse cx="70" cy="140" rx="28" ry="18" fill="url(#leafGrad2)" 
+           transform="rotate(-25 70 140)">
+    <animate attributeName="ry" values="18;20;18" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="130" cy="145" rx="28" ry="18" fill="url(#leafGrad2)" 
+           transform="rotate(25 130 145)">
+    <animate attributeName="ry" values="18;20;18" dur="3.3s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Middle leaves -->
+  <ellipse cx="75" cy="115" rx="24" ry="15" fill="url(#leafGrad2)" 
+           transform="rotate(-20 75 115)" opacity="0.95">
+    <animate attributeName="ry" values="15;17;15" dur="2.8s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="125" cy="120" rx="24" ry="15" fill="url(#leafGrad2)" 
+           transform="rotate(20 125 120)" opacity="0.95">
+    <animate attributeName="ry" values="15;17;15" dur="3.1s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Top leaves (small) -->
+  <ellipse cx="85" cy="95" rx="18" ry="12" fill="#10B981" 
+           transform="rotate(-15 85 95)" opacity="0.9"/>
+  <ellipse cx="115" cy="98" rx="18" ry="12" fill="#10B981" 
+           transform="rotate(15 115 98)" opacity="0.9"/>
+  
+  <!-- New growth at top -->
+  <g opacity="0.8">
+    <ellipse cx="95" cy="85" rx="8" ry="6" fill="#D1FAE5" 
+             transform="rotate(-10 95 85)">
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="2s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="105" cy="87" rx="8" ry="6" fill="#D1FAE5" 
+             transform="rotate(10 105 87)">
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="2.2s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+</svg>
