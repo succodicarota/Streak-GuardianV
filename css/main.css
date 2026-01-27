@@ -1144,3 +1144,116 @@ input {
     padding-bottom: calc(env(safe-area-inset-bottom) + 8px);
   }
 }
+
+/* ================================
+   COMMUNITY PAGE
+   ================================ */
+
+.community-container {
+  padding: var(--spacing-lg) var(--spacing-md);
+  padding-bottom: 100px;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: var(--color-text-light);
+  margin: var(--spacing-sm) 0 var(--spacing-xl);
+}
+
+.constellation-section {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+#constellation-canvas {
+  width: 100%;
+  max-width: 350px;
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+}
+
+.constellation-stats {
+  margin-top: var(--spacing-lg);
+}
+
+.constellation-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.global-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.global-stat-card {
+  background: var(--color-surface);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.global-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.global-stat-label {
+  font-size: 12px;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+}
+
+.events-feed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.event-item {
+  background: var(--color-surface);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text);
+  border-left: 3px solid var(--color-primary);
+}
+
+.community-privacy {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+  padding: var(--spacing-lg);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+.community-privacy p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-light);
+  font-size: 14px;
+}
