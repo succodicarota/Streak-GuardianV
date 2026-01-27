@@ -188,12 +188,13 @@ function showOnboarding() {
 // Show specific onboarding step
 function showOnboardingStep(step) {
   // Hide all steps
-  for (let i = 1; i <= 4; i++) {
-    const stepElement = document.getElementById(`onboarding-step-${i}`);
+  const steps = ['1', '2', '3', '3b', '4'];
+  steps.forEach(s => {
+    const stepElement = document.getElementById(`onboarding-step-${s}`);
     if (stepElement) {
       stepElement.style.display = 'none';
     }
-  }
+  });
   
   // Show current step
   const currentStep = document.getElementById(`onboarding-step-${step}`);
@@ -228,6 +229,11 @@ function customAddiction() {
 function selectCompanion(type) {
   selectedCompanionType = type;
   nextOnboardingStep(4);
+}
+
+// Show animal selection substep
+function showAnimalSelection() {
+  showOnboardingStep('3b');
 }
 
 // Complete onboarding
@@ -280,7 +286,7 @@ function showApp() {
 // Navigation between pages
 function navigateTo(page) {
   // Hide all pages
-  const pages = ['home-page', 'stats-page', 'settings-page'];
+  const pages = ['home-page', 'stats-page', 'community-page', 'settings-page'];
   pages.forEach(pageId => {
     const element = document.getElementById(pageId);
     if (element) {
@@ -308,6 +314,8 @@ function navigateTo(page) {
     updateHomeUI();
   } else if (page === 'stats') {
     Stats.updateStatsPage();
+  } else if (page === 'community') {
+    initializeCommunity();
   } else if (page === 'settings') {
     updateSettingsUI();
   }
@@ -773,6 +781,7 @@ window.nextOnboardingStep = nextOnboardingStep;
 window.selectAddiction = selectAddiction;
 window.customAddiction = customAddiction;
 window.selectCompanion = selectCompanion;
+window.showAnimalSelection = showAnimalSelection;
 window.completeOnboarding = completeOnboarding;
 window.navigateTo = navigateTo;
 window.checkInSuccess = checkInSuccess;

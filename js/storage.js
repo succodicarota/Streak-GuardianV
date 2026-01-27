@@ -122,7 +122,7 @@ const STORAGE_KEYS = {
   ONBOARDING_COMPLETED: 'onboardingCompleted',
   
   // User data
-  COMPANION_TYPE: 'companionType',         // 'plant', 'animal', 'flame'
+  COMPANION_TYPE: 'companionType',         // 'plant', 'cat', 'dog', 'bird', 'dragon', 'flame'
   COMPANION_NAME: 'companionName',
   ADDICTION_TYPE: 'addictionType',
   ADDICTION_CUSTOM: 'addictionCustom',     // For custom addiction

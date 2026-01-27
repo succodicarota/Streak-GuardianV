@@ -8,22 +8,34 @@ const Companion = {
   // Evolution thresholds for each companion type
   MILESTONES: {
     plant: [
-      { days: 0, emoji: '🌱', name: 'Germoglio' },
-      { days: 3, emoji: '🌿', name: 'Piantina' },
-      { days: 7, emoji: '🪴', name: 'Pianta in Vaso' },
-      { days: 30, emoji: '🌳', name: 'Albero Maestoso' }
+      { days: 0, path: '/assets/companions/plant-stage1.svg', name: 'Germoglio' },
+      { days: 7, path: '/assets/companions/plant-stage2.svg', name: 'Piantina' },
+      { days: 30, path: '/assets/companions/plant-stage3.svg', name: 'Albero' }
     ],
-    animal: [
-      { days: 0, emoji: '🥚', name: 'Uovo' },
-      { days: 3, emoji: '🐣', name: 'Cucciolo' },
-      { days: 7, emoji: '🐕', name: 'Adolescente' },
-      { days: 30, emoji: '🦁', name: 'Protettore' }
+    cat: [
+      { days: 0, path: '/assets/companions/egg.svg', name: 'Uovo Misterioso' },
+      { days: 7, path: '/assets/companions/cat-stage2.svg', name: 'Gattino' },
+      { days: 30, path: '/assets/companions/cat-stage3.svg', name: 'Gatto' }
+    ],
+    dog: [
+      { days: 0, path: '/assets/companions/egg.svg', name: 'Uovo Misterioso' },
+      { days: 7, path: '/assets/companions/dog-stage2.svg', name: 'Cucciolo' },
+      { days: 30, path: '/assets/companions/dog-stage3.svg', name: 'Cane' }
+    ],
+    bird: [
+      { days: 0, path: '/assets/companions/egg.svg', name: 'Uovo Misterioso' },
+      { days: 7, path: '/assets/companions/bird-stage2.svg', name: 'Pulcino' },
+      { days: 30, path: '/assets/companions/bird-stage3.svg', name: 'Uccello' }
+    ],
+    dragon: [
+      { days: 0, path: '/assets/companions/egg.svg', name: 'Uovo Misterioso' },
+      { days: 7, path: '/assets/companions/dragon-stage2.svg', name: 'Draghetto' },
+      { days: 30, path: '/assets/companions/dragon-stage3.svg', name: 'Drago' }
     ],
     flame: [
-      { days: 0, emoji: '✨', name: 'Scintilla' },
-      { days: 3, emoji: '🔥', name: 'Fiamma' },
-      { days: 7, emoji: '🔥🔥', name: 'Grande Fuoco' },
-      { days: 30, emoji: 'phoenix', name: 'Fenice' }
+      { days: 0, path: '/assets/companions/flame-stage1.svg', name: 'Scintilla' },
+      { days: 7, path: '/assets/companions/flame-stage2.svg', name: 'Fiamma' },
+      { days: 30, path: '/assets/companions/flame-stage3.svg', name: 'Stella Cadente' }
     ]
   },
   
@@ -66,8 +78,11 @@ const Companion = {
       // At max evolution
       const messages = {
         plant: 'Il tuo albero è maestoso! Continua così! 🌳',
-        animal: 'Il tuo compagno è un protettore! Siete una squadra! 🦁',
-        flame: 'Sei rinato come fenice! Inarrestabile! 🔥🦅'
+        cat: 'Il tuo gatto è cresciuto! Fiero e indipendente! 🐈',
+        dog: 'Il tuo cane è fedele e forte! Siete una squadra! 🐕',
+        bird: 'Il tuo uccello vola libero! Guardalo planare! 🦅',
+        dragon: 'Il tuo drago è leggendario! Potenza assoluta! 🐉',
+        flame: 'Sei una stella cadente! Inarrestabile! ⭐'
       };
       return messages[companionType] || 'Continua così! 💪';
     }
@@ -77,23 +92,33 @@ const Companion = {
     // Different messages based on companion type
     const messages = {
       plant: {
-        3: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} spunterà il germoglio`,
-        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} diventerà un arbusto`,
+        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} diventerà una piantina`,
         30: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} sarà un albero maestoso`
       },
-      animal: {
-        3: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} l'uovo si schiuderà`,
-        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} il cucciolo crescerà`,
-        30: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} diventerà un protettore`
+      cat: {
+        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} l'uovo si schiuderà`,
+        30: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} il gattino crescerà`
+      },
+      dog: {
+        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} l'uovo si schiuderà`,
+        30: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} il cucciolo crescerà`
+      },
+      bird: {
+        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} l'uovo si schiuderà`,
+        30: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} il pulcino volerà`
+      },
+      dragon: {
+        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} l'uovo si schiuderà`,
+        30: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} il draghetto crescerà`
       },
       flame: {
-        3: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} diventerai una fiamma`,
-        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} diventerai un grande fuoco`,
-        30: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} rinascerai come fenice`
+        7: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} diventerà una fiamma`,
+        30: `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} diventerà una stella`
       }
     };
     
-    return messages[companionType][nextMilestone.days] || 'Continua il tuo viaggio!';
+    return messages[companionType]?.[nextMilestone.days] || 
+           `Tra ${daysUntil} ${daysUntil === 1 ? 'giorno' : 'giorni'} evolverà!`;
   },
   
   // Get personalized message based on companion type and context
@@ -109,19 +134,43 @@ const Companion = {
         milestone: `${companionName} fiorisce grazie alla tua determinazione! Sei più forte di quanto pensi! 🌸`,
         checkin: `${companionName} cresce un altro giorno! Le radici diventano più profonde. 🌿`
       },
-      animal: {
+      cat: {
+        general: `${companionName} ti osserva con fiducia. Indipendente ma sempre al tuo fianco.`,
+        sos: `${companionName} si avvicina silenziosamente. I gatti sentono quando hai bisogno di loro. Sei al sicuro.`,
+        evolution: `${companionName} è cresciuto con eleganza! Fiero e indipendente! 🐈`,
+        reset: `${companionName} ti guarda senza giudicare. I gatti sanno che cadere fa parte del viaggio. Rialzati.`,
+        milestone: `${companionName} fa le fusa! È incredibilmente fiero di te! 🐱`,
+        checkin: `${companionName} allunga le zampe! Un altro giorno insieme! 🐈`
+      },
+      dog: {
         general: `${companionName} conta su di te, e tu non sei mai solo in questo viaggio. Siete una squadra.`,
         sos: `${companionName} sente che hai bisogno di supporto. Non sei solo. Siete una squadra e supererete questo momento insieme.`,
-        evolution: `${companionName} è cresciuto al tuo fianco! State diventando più forti insieme! 🐾`,
+        evolution: `${companionName} è cresciuto al tuo fianco! State diventando più forti insieme! 🐕`,
         reset: `${companionName} non ti abbandona mai. I veri compagni restano anche quando cadi. Rialzati, c'è qualcuno che crede in te. 💙`,
-        milestone: `${companionName} è incredibilmente fiero di te! Guarda quanto siete cresciuti insieme! 🦁`,
+        milestone: `${companionName} scodinzola felice! È incredibilmente fiero di te! 🐶`,
         checkin: `${companionName} gioisce! Un altro giorno insieme, un passo avanti! 🐕`
+      },
+      bird: {
+        general: `${companionName} ti guarda dall'alto. Libero, ma sempre torna da te.`,
+        sos: `${companionName} canta una melodia tranquilla. Anche le tempeste passano. Respira.`,
+        evolution: `${companionName} ha spiegato le ali! Guarda quanto è cresciuto! 🦅`,
+        reset: `${companionName} è caduto dal nido, ma ha imparato a volare. Anche tu puoi rialzarti.`,
+        milestone: `${companionName} vola in cerchio! Celebra con te questa vittoria! 🐦`,
+        checkin: `${companionName} cinguetta felice! Un altro volo insieme! 🦜`
+      },
+      dragon: {
+        general: `${companionName} ti protegge con potenza antica. Un guardiano leggendario.`,
+        sos: `${companionName} soffia fiamme difensive. Nessuno ti toccherà. Sei al sicuro.`,
+        evolution: `${companionName} ha dispiegato le ali! Potenza leggendaria! 🐉`,
+        reset: `Anche ${companionName} è nato dal fuoco. Le leggende iniziano dalle ceneri. Riparti.`,
+        milestone: `${companionName} ruggisce! La tua forza è leggendaria! 🐲`,
+        checkin: `${companionName} soffia fiamme di gioia! Avanti così! 🔥`
       },
       flame: {
         general: `Ogni giorno ${companionName} brucia più forte. La tua fiamma interiore è potente e nulla può spegnerla.`,
         sos: `${companionName} ti ricorda: anche nei momenti di oscurità, la tua luce può tornare. Sei più forte del desiderio.`,
         evolution: `${companionName} arde con intensità rinnovata! Sei un fuoco che non può essere spento! 🔥`,
-        reset: `Come ${companionName}, puoi rinascere dalle ceneri. La fenice cade per risorgere più forte. Questa non è la fine. 🔥`,
+        reset: `Come ${companionName}, puoi rinascere dalle ceneri. La stella cade per brillare più forte. Questa non è la fine. ⭐`,
         milestone: `${companionName} brucia luminoso come mai prima! Sei una forza inarrestabile della natura! ✨`,
         checkin: `${companionName} divampa! La tua fiamma brucia sempre più forte! 🔥`
       }
@@ -132,7 +181,7 @@ const Companion = {
   
   // Check if it's time to show evolution celebration
   shouldShowEvolution(streakDays) {
-    const milestones = [3, 7, 30];
+    const milestones = [7, 30];
     
     // Check if just reached a milestone and haven't seen it yet
     for (const milestone of milestones) {
@@ -153,25 +202,20 @@ const Companion = {
     const oldState = this.getCurrentState(companionType, milestone - 1);
     const newState = this.getCurrentState(companionType, milestone);
     
-    // Update overlay content
+    // Update overlay content with SVG images
     const oldEmojiEl = document.getElementById('old-emoji');
     const newEmojiEl = document.getElementById('new-emoji');
     
     if (oldEmojiEl) {
-      oldEmojiEl.textContent = oldState.emoji;
+      oldEmojiEl.innerHTML = `<img src="${oldState.path}" alt="${oldState.name}" style="width: 60px; height: 60px;">`;
     }
     
     if (newEmojiEl) {
-      if (newState.emoji === 'phoenix') {
-        newEmojiEl.innerHTML = '<img src="/assets/phoenix.svg" alt="Fenice" style="width: 80px; height: 80px;">';
-      } else {
-        newEmojiEl.textContent = newState.emoji;
-      }
+      newEmojiEl.innerHTML = `<img src="${newState.path}" alt="${newState.name}" style="width: 80px; height: 80px;">`;
     }
     
     const messages = {
-      3: `${companionName} è cresciuto!`,
-      7: `${companionName} continua ad evolversi!`,
+      7: `${companionName} è evoluto!`,
       30: `${companionName} ha raggiunto la sua forma finale!`
     };
     
@@ -179,7 +223,6 @@ const Companion = {
       messages[milestone] || `${companionName} è cresciuto!`;
     
     const submessages = {
-      3: `Sei al giorno ${milestone}. Ottimo inizio! 🎉`,
       7: `Sei al giorno ${milestone}. Stai facendo alla grande! 💪`,
       30: `Sei al giorno ${milestone}. Sei una leggenda! 🌟`
     };
@@ -230,23 +273,16 @@ const Companion = {
     // Get current state
     const currentState = this.getCurrentState(companionType, streakDays);
     
-    // Update emoji
+    // Update companion display with SVG
     const emojiElement = document.getElementById('companion-emoji');
     if (emojiElement) {
-      if (currentState.emoji === 'phoenix') {
-        // Use SVG for phoenix
-        emojiElement.innerHTML = '<img src="/assets/phoenix.svg" alt="Fenice" style="width: 100px; height: 100px; filter: drop-shadow(0 4px 8px rgba(255, 140, 0, 0.5));" class="phoenix-svg">';
-      } else {
-        emojiElement.textContent = currentState.emoji;
-        emojiElement.innerHTML = currentState.emoji; // Reset if was SVG before
-      }
+      emojiElement.innerHTML = `<img src="${currentState.path}" alt="${currentState.name}" style="width: 120px; height: 120px;" class="companion-svg">`;
     }
     
-    // Update name display
+    // Update name display (just text, no emoji needed)
     const nameElement = document.getElementById('companion-display-name');
     if (nameElement) {
-      const displayEmoji = currentState.emoji === 'phoenix' ? '🔥' : currentState.emoji;
-      nameElement.textContent = `${displayEmoji} ${companionName}`;
+      nameElement.textContent = companionName;
     }
     
     // Update streak counter
